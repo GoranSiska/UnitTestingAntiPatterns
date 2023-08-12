@@ -12,7 +12,7 @@ namespace Misspecification
             //for (var i = 0; i < 100; i++)
             //{
                 //Arrange
-                StaticKernel.Instance.Bind<IBalanceRepository>().To<TestBalanceRepository>();
+                StaticKernel.Instance.Rebind<IBalanceRepository>().To<TestBalanceRepository>();
                 var bankAccount = new BankAccountV2(123);
                 //var bankAccount = new BankAccountV3(123, new TestBalanceRepository());
 
@@ -30,7 +30,7 @@ namespace Misspecification
             //for (var i = 0; i < 100; i++)
             //{
                 //Arrange
-                StaticKernel.Instance.Bind<IBalanceRepository>().To<TestFailingBalanceRepository>();
+                StaticKernel.Instance.Rebind<IBalanceRepository>().To<TestFailingBalanceRepository>();
                 var bankAccount = new BankAccountV2(123);
                 //var bankAccount = new BankAccountV3(123, new TestFailBalanceRepository());
 

@@ -1,4 +1,4 @@
-﻿using Moq;
+﻿using NSubstitute;
 using NUnit.Framework;
 using Underspecification.TestClasses;
 
@@ -12,11 +12,10 @@ namespace Underspecification
         {
             //Arrange
             var validInput = 100;
-            var inputValidatorMock = new Mock<IInputValidator>();
-            inputValidatorMock
-                .Setup(iv => iv.Validate(It.IsAny<int>()))
+            var inputValidator = Substitute.For<IInputValidator>();
+            inputValidator
+                .Validate(validInput)
                 .Returns(validInput);
-            var inputValidator = inputValidatorMock.Object;
 
             //Act
             var result = inputValidator.Validate(validInput);
